@@ -4,7 +4,7 @@ import json
 import pandas as pd
 from datetime import date, timedelta
 from time import sleep
-from siuba import group_by, mutate, select, summarize, _, arrange
+from siuba import group_by, mutate, select, summarize, _, arrange, filter
 
 def terna_token():
 
@@ -29,7 +29,7 @@ def terna_token():
 
 # new function
 
-def macrozonal_imbalance(date_from, date_to, daily = True, quartorario = False):
+def macrozonal_imbalance(date_from, date_to, daily = True, quartorario = False, macrozone = None):
     
     # Granularity
     if not quartorario:
@@ -94,13 +94,19 @@ def macrozonal_imbalance(date_from, date_to, daily = True, quartorario = False):
         )
     )
 
+    if macrozone is not None:
+        data = (
+            data >> 
+                filter(_.macrozone == macrozone)
+        )
+
     return data
    
 
 
 # prices
 
-def imbalance_prices(date_from, date_to, daily = True, quartorario = False):
+def imbalance_prices(date_from, date_to, daily = True, quartorario = False, macrozone = None):
     
     # Granularity
     if not quartorario:
@@ -162,6 +168,12 @@ def imbalance_prices(date_from, date_to, daily = True, quartorario = False):
                 _.imbalance_price
             )
     )
+    
+    if macrozone is not None:
+        data = (
+            data >> 
+                filter(_.macrozone == macrozone)
+        )
 
     return data
    
