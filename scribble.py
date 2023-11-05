@@ -2,7 +2,8 @@
 from datetime import date, timedelta, datetime
 import terna
 import config
-from siuba import group_by, mutate, select, summarize, _, arrange, filter
+from siuba import group_by, mutate, select, summarize, _, arrange, filter, count
+import siuba as su
 import pandas as pd
 import entsoe_methods
 import entsoe
@@ -14,7 +15,15 @@ class SbilTrader:
             self,
             lookback  = 10,
             macrozone = "NORD",
-            mgp       = None
+            data_quartorario_preliminare = None,
+            prices_quartorario_preliminare = None,
+            data_quartorario_daily = None,
+            prices_quartorario_daily = None,
+            mgp       = None,
+            scheduled_exchanges = None,
+            physical_flows = None,
+            load_forecast = None,
+            load_forecasts_neighbours = None
     ):
         self.lookback = lookback
         self.macrozone = macrozone
@@ -22,15 +31,44 @@ class SbilTrader:
         # all data we need -
         # sbil / prices / mgp / .... in the office easier
 
-        self.data_quartorario = terna.preliminary_macrozonal_imbalance(
+        self.data_quartorario_preliminare = terna.macrozonal_imbalance(
             date_from = date.today() + timedelta(days = - self.lookback),
             date_to   = date.today() + timedelta(days = 1),
-            quartorario = True
+            daily = False,
+            quartorario = True,
+            macrozone = self.macrozone
         )
-        self.prices_quartorario = terna.preliminary_prices(
+
+        self.prices_quartorario_preliminare = terna.imbalance_prices(
             date_from = date.today() + timedelta(days = - self.lookback),
             date_to   = date.today() + timedelta(days = 1),
-            quartorario = False
+            daily     = False,
+            quartorario = False,
+            macrozone = self.macrozone
+        )
+
+        self.data_quartorario_daily = terna.macrozonal_imbalance(
+            date_from = date.today() + timedelta(days = - self.lookback),
+            date_to   = date.today() + timedelta(days = 1),
+            daily = True,
+            quartorario = True,
+            macrozone = self.macrozone
+        )
+
+        self.prices_quartorario_daily = terna.imbalance_prices(
+            date_from = date.today() + timedelta(days = - self.lookback),
+            date_to   = date.today() + timedelta(days = 1),
+            daily = True,
+            quartorario = True,
+            macrozone = self.macrozone
+        )
+
+        self.prices_preliminare_orario = terna.imbalance_prices(
+            date_from = date.today() + timedelta(days = - self.lookback),
+            date_to   = date.today() + timedelta(days = 1),
+            daily = True,
+            quartorario = False,
+            macrozone = self.macrozone
         )
 
         # mgp prices
@@ -55,13 +93,41 @@ class SbilTrader:
 
 instance = SbilTrader()
 
-north = instance.data_quartorario >> filter(_.macrozone == "NORD")
 
-## calculate time difference
-north >> filter(north['reference_date'] == max(north['reference_date']))
+import pytimetk as tk
+import siuba as su
 
-current_time = datetime.now()
-rounded_time = current_time.replace(minute=0, second=0, microsecond=0)
-first_tradable_hour = rounded_time + timedelta(hours=2)
+qo = su.filter(instance.data_quartorario_daily, _.macrozone == "NORD")
 
-first_tradable_hour.strftime("%Y-%m-%d %H:%M:%S")
+from plotnine import ggplot, aes, geom_line
+
+(
+    qo >>
+    ggplot() + 
+    geom_line(aes(x = "reference_date", y = "imbalance"))
+)
+
+dprep = su.select(qo, _.reference_date, _.imbalance)
+
+
+dprep['ma1'] = dprep['imbalance'].diff().rolling(8).mean()
+dprep['ma2'] = dprep['imbalance'].rolling(16).mean()
+
+import numpy as np
+
+newdf = dprep.dropna()
+stat = (
+     newdf >>
+        mutate(
+            strategy = su.if_else(
+                _.ma1 >= _.ma2, "lungo", "corto"
+            )
+        )
+)
+
+
+stat[400:450]
+
+import pandera as pa
+
+pa.infer_schema(instance.data_quartorario_daily).to_yaml()

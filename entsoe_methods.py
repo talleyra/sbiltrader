@@ -131,7 +131,7 @@ def physical_flows(area = entsoe.Area.IT_NORD, lookback = 10):
         except: print("no data")
 
         try:
-            data = client.query_scheduled_exchanges(
+            data = client.query_crossborder_flows(
                 country_code_from= entsoe.Area[i],
                 country_code_to=area,
                 start=start_date,

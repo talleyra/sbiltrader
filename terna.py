@@ -30,6 +30,18 @@ def terna_token():
 # new function
 
 def macrozonal_imbalance(date_from, date_to, daily = True, quartorario = False, macrozone = None):
+    """_summary_
+
+    Args:
+        date_from (_type_): _description_
+        date_to (_type_): _description_
+        daily (bool, optional): _description_. Defaults to True.
+        quartorario (bool, optional): _description_. Defaults to False.
+        macrozone (_type_, optional): _description_. Defaults to None.
+
+    Returns:
+        _type_: _description_
+    """
     
     # Granularity
     if not quartorario:
