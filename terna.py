@@ -29,7 +29,7 @@ def terna_token():
 
 # new function
 
-def macrozonal_imbalance(date_from, date_to, quartorario = False):
+def macrozonal_imbalance(date_from, date_to, daily = True, quartorario = False):
     
     # Granularity
     if not quartorario:
@@ -37,8 +37,15 @@ def macrozonal_imbalance(date_from, date_to, quartorario = False):
     else:
         granularity = "Quarto Orario"
 
+
+    if daily:
+        type     = "daily-macrozonal-imbalance"
+        dict_key = "daily_macrozonal_imbalance"
+    else:
+        type     = "preliminary-macrozonal-imbalance"
+        dict_key = "preliminary_macrozonal_imbalance"
     # Base URL of the API
-    base_url = f"https://api.terna.it/market-and-fees/v1.0/preliminary-macrozonal-imbalance"
+    base_url = f"https://api.terna.it/market-and-fees/v1.0/{type}"
 
     # format datetime
     date_from = date_from.strftime("%d/%m/%Y")
@@ -66,7 +73,7 @@ def macrozonal_imbalance(date_from, date_to, quartorario = False):
     response = req.get(base_url, params=params, headers=headers)
 
     data_json = response.json()
-    data = pd.DataFrame(data_json['preliminary_macrozonal_imbalance'])
+    data = pd.DataFrame(data_json[dict_key])
     
     data = (
     data >>
@@ -93,7 +100,7 @@ def macrozonal_imbalance(date_from, date_to, quartorario = False):
 
 # prices
 
-def imbalance_prices(date_from, date_to, quartorario = False):
+def imbalance_prices(date_from, date_to, daily = True, quartorario = False):
     
     # Granularity
     if not quartorario:
@@ -101,8 +108,15 @@ def imbalance_prices(date_from, date_to, quartorario = False):
     else:
         granularity = "Quarto Orario"
 
+    if daily:
+        type     = "daily-prices"
+        dict_key = "daily_prices" 
+    else: 
+        type     = "preliminary-prices"
+        dict_key = "preliminary_prices"
+
     # Base URL of the API
-    base_url = f"https://api.terna.it/market-and-fees/v1.0/preliminary-prices"
+    base_url = f"https://api.terna.it/market-and-fees/v1.0/{type}"
 
     # format datetime
     date_from = date_from.strftime("%d/%m/%Y")
@@ -132,7 +146,7 @@ def imbalance_prices(date_from, date_to, quartorario = False):
         print(response.content)
 
     data_json = response.json()
-    data = pd.DataFrame(data_json['preliminary_prices'])
+    data = pd.DataFrame(data_json[dict_key])
 
     data = (
         data >>
