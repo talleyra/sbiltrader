@@ -115,15 +115,16 @@ class Auction:
             orders['acc'] = np.where(orders['prezzo'] <= orders['prezzozonale'], 'acc', 'not')
             idx = orders[orders['acc'] == 'acc']['prezzo'].idxmax()
             
-
         if type == "buy":
             orders = data['buy_orders']
             orders['acc'] = np.where(orders['prezzo'] >= orders['prezzozonale'], 'acc', 'not')
             idx = orders[orders['acc'] == 'acc']['prezzo'].idxmin()
             
         marginal_order = orders.loc[idx]
+        print(marginal_order)
         cumqty = orders.loc[idx].cqty
-
+        print(cumqty)
+        
         def step_interpolate_prezzo(cumqty):
             index = np.searchsorted(orders['cqty'], cumqty) - 1
             return orders['prezzo'].iloc[index]
