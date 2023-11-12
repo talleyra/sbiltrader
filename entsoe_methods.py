@@ -92,10 +92,6 @@ def scheduled_exchanges(area = entsoe.Area.IT_NORD, lookback = 10):
     
     return complete_scheduled_exchanges
 
-
-
-
-
 def physical_flows(area = entsoe.Area.IT_NORD, lookback = 10):
 
     zone_name = area.name

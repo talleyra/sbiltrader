@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Prodotto" type="xs:string" minOccurs="0" />
+                <xs:element name="Profilo" type="xs:string" minOccurs="0" />
+                <xs:element name="MinPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="MaxPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="ReferencePrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="VolumeMw" type="xs:decimal" minOccurs="0" />
+                <xs:element name="VolumeMwh" type="xs:decimal" minOccurs="0" />
+                <xs:element name="PosizioneAperta" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <Data>2023-01-02T00:00:00+01:00</Data>
+    <Prodotto>PL-2023-01-03</Prodotto>
+    <Profilo>PEAK</Profilo>
+  </Table>
+  <Table>
+    <Data>2023-01-02T00:00:00+01:00</Data>
+    <Prodotto>PL-2023-01-04</Prodotto>
+    <Profilo>PEAK</Profilo>
+  </Table>
+  <Table>
+    <Data>2023-01-02T00:00:00+01:00</Data>
+    <Prodotto>BL-2023-01-04</Prodotto>
+    <Profilo>BSLD</Profilo>
+  </Table>
+  <Table>
+    <Data>2023-01-02T00:00:00+01:00</Data>
+    <Prodotto>BL-2023-01-03</Prodotto>
+    <Profilo>BSLD</Profilo>
+  </Table>
+</NewDataSet>

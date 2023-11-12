@@ -1,0 +1,115 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="PrezziMedi">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="xs:int" minOccurs="0" />
+                <xs:element name="Market" type="xs:string" minOccurs="0" />
+                <xs:element name="NORD" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CNOR" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CSUD" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SUD" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CALA" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SICI" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SARD" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="VolumiScambiati">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="xs:int" minOccurs="0" />
+                <xs:element name="Market" type="xs:string" minOccurs="0" />
+                <xs:element name="Quantita" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <PrezziMedi>
+    <Data>20230101</Data>
+    <Market>MGP</Market>
+    <NORD>193.144583</NORD>
+    <CNOR>193.144583</CNOR>
+    <CSUD>193.144583</CSUD>
+    <SUD>193.144583</SUD>
+    <CALA>193.144583</CALA>
+    <SICI>193.144583</SICI>
+    <SARD>193.144583</SARD>
+  </PrezziMedi>
+  <PrezziMedi>
+    <Data>20230101</Data>
+    <Market>MI-A1</Market>
+    <NORD>178.707083</NORD>
+    <CNOR>178.707083</CNOR>
+    <CSUD>178.707083</CSUD>
+    <SUD>178.707083</SUD>
+    <CALA>178.707083</CALA>
+    <SICI>178.707083</SICI>
+    <SARD>178.707083</SARD>
+  </PrezziMedi>
+  <PrezziMedi>
+    <Data>20230101</Data>
+    <Market>MI-A2</Market>
+    <NORD>160.285416</NORD>
+    <CNOR>160.285416</CNOR>
+    <CSUD>160.285416</CSUD>
+    <SUD>160.285416</SUD>
+    <CALA>160.285416</CALA>
+    <SICI>160.285416</SICI>
+    <SARD>160.285416</SARD>
+  </PrezziMedi>
+  <PrezziMedi>
+    <Data>20230101</Data>
+    <Market>MI-A3</Market>
+    <NORD>194.668333</NORD>
+    <CNOR>194.668333</CNOR>
+    <CSUD>194.668333</CSUD>
+    <SUD>194.668333</SUD>
+    <CALA>194.668333</CALA>
+    <SICI>194.668333</SICI>
+    <SARD>194.668333</SARD>
+  </PrezziMedi>
+  <PrezziMedi>
+    <Data>20230101</Data>
+    <Market>MI-XBID</Market>
+    <NORD>143.49459129166667</NORD>
+    <CNOR>166.98845758333334</CNOR>
+    <CSUD>165.70721466666666</CSUD>
+    <SUD>163.73264575</SUD>
+    <CALA>175.87522005</CALA>
+    <SICI>177.58457416666667</SICI>
+    <SARD>167.45757366666666</SARD>
+  </PrezziMedi>
+  <VolumiScambiati>
+    <Data>20230101</Data>
+    <Market>MGP</Market>
+    <Quantita>563611.003</Quantita>
+  </VolumiScambiati>
+  <VolumiScambiati>
+    <Data>20230101</Data>
+    <Market>MI-A1</Market>
+    <Quantita>27876.374</Quantita>
+  </VolumiScambiati>
+  <VolumiScambiati>
+    <Data>20230101</Data>
+    <Market>MI-A2</Market>
+    <Quantita>11345.56</Quantita>
+  </VolumiScambiati>
+  <VolumiScambiati>
+    <Data>20230101</Data>
+    <Market>MI-A3</Market>
+    <Quantita>4373.88</Quantita>
+  </VolumiScambiati>
+  <VolumiScambiati>
+    <Data>20230101</Data>
+    <Market>MI-XBID</Market>
+    <Quantita>4805.7</Quantita>
+  </VolumiScambiati>
+</NewDataSet>

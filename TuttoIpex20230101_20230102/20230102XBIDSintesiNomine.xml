@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="xs:int" minOccurs="0" />
+                <xs:element name="Acquisto" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Vendita" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Immissione" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Prelievo" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SbilanciamentoImmissione" type="xs:decimal" minOccurs="0" />
+                <xs:element name="SbilanciamentoPrelievo" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table>
+    <Data>20230102</Data>
+    <Acquisto>5486.900</Acquisto>
+    <Vendita>5600.400</Vendita>
+    <Immissione>6827.844</Immissione>
+    <Prelievo>6565.864</Prelievo>
+    <SbilanciamentoImmissione>-71.714</SbilanciamentoImmissione>
+    <SbilanciamentoPrelievo>76.767</SbilanciamentoPrelievo>
+  </Table>
+</NewDataSet>

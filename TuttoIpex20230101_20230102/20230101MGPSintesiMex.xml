@@ -1,0 +1,47 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SintesiMex">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Data" type="xs:string" minOccurs="0" />
+                <xs:element name="Mercato" type="xs:string" minOccurs="0" />
+                <xs:element name="PrezzoMedioPonderato" type="xs:string" minOccurs="0" />
+                <xs:element name="PrezzoMinimo" type="xs:string" minOccurs="0" />
+                <xs:element name="PrezzoMassimo" type="xs:string" minOccurs="0" />
+                <xs:element name="OffertePresentate" type="xs:string" minOccurs="0" />
+                <xs:element name="AcquistiPresentati" type="xs:string" minOccurs="0" />
+                <xs:element name="VenditePresentate" type="xs:string" minOccurs="0" />
+                <xs:element name="OfferteAccettate" type="xs:string" minOccurs="0" />
+                <xs:element name="AcquistiAccettati" type="xs:string" minOccurs="0" />
+                <xs:element name="VenditeAccettate" type="xs:string" minOccurs="0" />
+                <xs:element name="EnergiaDiBorsaMWh" type="xs:string" minOccurs="0" />
+                <xs:element name="EnergiaTotaleMWh" type="xs:string" minOccurs="0" />
+                <xs:element name="Liquidita" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <SintesiMex>
+    <Data>20230101</Data>
+    <Mercato>MGP</Mercato>
+    <PrezzoMedioPonderato>193,1445830000000</PrezzoMedioPonderato>
+    <PrezzoMinimo>165,89</PrezzoMinimo>
+    <PrezzoMassimo>243,42</PrezzoMassimo>
+    <OffertePresentate>65823</OffertePresentate>
+    <AcquistiPresentati>28751</AcquistiPresentati>
+    <VenditePresentate>37072</VenditePresentate>
+    <OfferteAccettate>52367</OfferteAccettate>
+    <AcquistiAccettati>25005</AcquistiAccettati>
+    <VenditeAccettate>27362</VenditeAccettate>
+    <EnergiaDiBorsaMWh>397617,499</EnergiaDiBorsaMWh>
+    <EnergiaTotaleMWh>563610,887</EnergiaTotaleMWh>
+    <Liquidita>70,5482289592465</Liquidita>
+  </SintesiMex>
+</NewDataSet>
